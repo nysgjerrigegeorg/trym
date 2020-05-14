@@ -1,0 +1,145 @@
+body {
+    background-color: grey;
+    background-image: url('Images/emptyOffice.jpg');
+    background-repeat: no-repeat;
+    background-size: 900px 676px;
+}
+
+h2 {
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+h3 {
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: blue;
+    top: 100px;
+    left: 150px;
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+.tid {
+    position: fixed;
+    top: 0;
+    margin-left: 0;
+    right: 0;
+    width: 250px;
+    height: 25px;
+    padding: 2px;
+    background-color: rgb(199, 193, 193);
+}
+
+.tid p {
+    font-size: 20px;
+    position: absolute;
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.animasjon {
+    position: relative;
+    top: 150px;
+    left: 50px;
+    width: 307px;
+    height: 335px;
+    transition-duration: 0.5s;
+    transition-property: left;
+}
+.animasjon img {
+    position: absolute;
+    width: 307px;
+    height: 335px;
+    left: 0;
+    top: 0;
+    z-index: 4;
+}
+
+.animasjon #arm1 {
+    height: 42px;
+    width: 93px;
+    position: absolute;
+    left: 110px;
+    z-index: 3;
+    transition-duration: 0.3s;
+    transition-property: transform, top;
+}
+.animasjon #arm2 {
+    height: 42px;
+    width: 93px;
+    position: absolute;
+    left: 105px;
+    z-index: 5;
+    transition-duration: 0.3s;
+    transition-property: transform, top;
+}
+
+#pause{
+    height: 50px;
+    width: 300px;
+    position: absolute;
+    color: white;
+    bottom: 100;
+    right: 0;
+    border-radius: 5px;
+    background-color: blue;
+    font-weight: bold;
+}
+
+#sluttAaMase{
+    height: 50px;
+    width: 300px;
+    position: absolute;
+    bottom: 20;
+    right: 0;
+    border-radius: 5px;
+    background-color: red;
+    color: white;   
+}
+
+#ferdigPause {
+    display: none;
+    height: 50px;
+    width: 300px;
+    position: absolute;
+    bottom: 20;
+    right: 0;
+    border-radius: 5px;
+    background-color: green;
+    color: white; 
+}
+
+.midlAnimasjon{
+    position: relative;
+    float: left;
+    top: 150px;
+    left: 200px;
+    width: 242px;
+    height: 346px;
+    overflow: hidden;
+}
+
+.midlAnimasjon img{
+    width: 242px;
+    height: 346px;
+    position: absolute;
+    margin-top: auto;
+    margin-left: auto;
+    z-index: 10;
+}
+
+.midlAnimasjon p{
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 160px;
+    left: 26px;
+    width: 96px;
+    height: 33px;
+    z-index: 11;
+}
