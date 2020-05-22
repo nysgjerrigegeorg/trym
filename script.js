@@ -4,9 +4,9 @@ var pauseLengde = 10; //minimum pauselengde, i minutter
 var teller=0;
 var frekvens = 100;
 var teller2 = 2;
+startDampveivals();
 var time = setInterval(tid,1000);
 var interval = setInterval(bevegelseTrym,frekvens);
-
 
 function bevegelseTrym() {
     var trym = document.querySelector('.animasjon #arm1');
@@ -28,7 +28,7 @@ function bevegelseTrym() {
     }
     teller++;
     if(teller===200){
-        frekvens = Math.floor(frekvens * 1,5);
+        frekvens = Math.floor(frekvens * 1.5);
         clearInterval(interval);
         interval = setInterval(bevegelseTrym,frekvens)
         teller = 0;
@@ -43,6 +43,14 @@ function taPause(e) {
     var pauseTekst = document.createElement('H3');
     pauseTekst.append('PAUSE!!!');
     document.body.appendChild(pauseTekst);
+    var koala = document.querySelector('#koala');
+    if (koala) {
+        koala.parentNode.removeChild(koala);
+    }
+    var dampveivals = document.querySelector('#dampveivals');
+    if (dampveivals) {
+        dampveivals.parentNode.removeChild(dampveivals);
+    }
     interval = setInterval(function () {
         document.querySelector('h3').style.transform = 'rotate('+(Math.floor(Math.random()*360))+'deg)';
     },1000);
@@ -85,6 +93,7 @@ function ferdigPause(e) {
         teller = 0;
         frekvens = 100;
         teller2 = 2;
+        startDampveivals();
         time = setInterval(tid,1000);
         interval = setInterval(bevegelseTrym,frekvens);
     } else {
@@ -108,8 +117,10 @@ function strengPekefinger(advarsel) {
     var nyTekst = document.createElement('p');
     nyTekst.append(advarsel);
     nyTekst.className = 'midl';
-    midlAnimasjon.appendChild(bilde);
-    midlAnimasjon.appendChild(nyTekst);
+    bilde.addEventListener('load',function() {
+        midlAnimasjon.appendChild(bilde);
+        midlAnimasjon.appendChild(nyTekst);
+    }, false);
 }
 
 function tid() {
@@ -133,7 +144,36 @@ function convertToMin (input) {
     min = min < 10 ? '0' + min : min;
     var sec = Math.floor(Math.abs(input)*60) % 60;
     sec = sec < 10 ? '0' + sec : sec;
-    return min + ':' + sec;
+    var hr = '';
+    if (min > 60) {
+        hr = Math.floor(min/60) + ':';
+        min = min % 60;
+    }
+    return hr + min + ':' + sec;
+}
+
+function startDampveivals() {
+    var placement = document.querySelector('.koalaTrap');
+    var dampveivals = document.createElement('img');
+    dampveivals.src='Images/dampveivals.png';
+    dampveivals.style.left='-250px';
+    dampveivals.id = 'dampveivals';
+    var koala = document.createElement('img');
+    koala.src = 'Images/coala.png';
+    koala.height = '54';
+    koala.width = '54';
+    koala.style.left = "200px";
+    koala.style.position = "relative";
+    koala.id = 'koala';
+    koala.style.zIndex = '3';
+    dampveivals.addEventListener('load',function() {
+        placement.appendChild(dampveivals);
+        placement.appendChild(koala);
+        setTimeout(function() {
+            dampveivals.style.left = '290px';
+        },500);
+
+    },false);   
 }
 
 document.querySelector('#pause').addEventListener('click', taPause, false);
