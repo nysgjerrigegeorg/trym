@@ -27,7 +27,7 @@ function bevegelseTrym() {
 
     }
     teller++;
-    if(teller===200){
+    if(teller===400){
         frekvens = Math.floor(frekvens * 1.5);
         clearInterval(interval);
         interval = setInterval(bevegelseTrym,frekvens)
